@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-// Component to fetch and display a list of Chuck Norris joke categories
-const CategoryList = () => {
+const CategoryList = ({ onCategorySelect }) => {
   // State variables to manage categories data, loading state, and errors
   const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -40,16 +40,27 @@ const CategoryList = () => {
     fetchCategories();
   }, []);
 
-  // Render loading spinner while fetching, error message if error occurs, and list of categories if available
+  // Function to handle category selection
+  const handleCategorySelect = (event) => {
+    setSelectedCategory(event.target.value);
+  };
+
+  // Render loading spinner while fetching, error message if error occurs, and dropdown menu for category selection
   return (
     <div>
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
-      <ul>
+      <select value={selectedCategory} onChange={handleCategorySelect}>
+        <option value="">Select Category</option>
         {categories.map((category, index) => (
-          <li key={index}>{category}</li>
+          <option key={index} value={category}>
+            {category}
+          </option>
         ))}
-      </ul>
+      </select>
+      {selectedCategory && (
+        <button onClick={() => onCategorySelect(selectedCategory)}>Get Joke</button>
+      )}
     </div>
   );
 };

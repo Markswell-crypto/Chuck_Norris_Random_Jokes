@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
-// Component to fetch and display a random Chuck Norris joke
-const Jokes = () => {
-  // State variables to manage joke data, loading state, and errors
+const ChuckNorrisJoke = () => {
+  // Initialize joke property in component's state to an empty string
   const [joke, setJoke] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -37,12 +36,16 @@ const Jokes = () => {
   // Render loading spinner while fetching, error message if error occurs, and joke if available
   return (
     <div>
+      <button onClick={fetchRandomJoke}>Get Random Joke</button>
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
-      {joke && <p>{joke}</p>}
-      <button onClick={fetchRandomJoke}>Get Random Joke</button>
+      {joke && (
+        <div style={{ border: '1px solid #ccc', borderRadius: '5px', padding: '10px', marginTop: '10px' }}>
+          <p>{joke}</p>
+        </div>
+      )}
     </div>
   );
 };
 
-export default Jokes;
+export default ChuckNorrisJoke;
