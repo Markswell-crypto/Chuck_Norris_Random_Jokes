@@ -5,26 +5,35 @@ import CategoryList from './components/categoryList/CategoryList';
 import './App.css'; 
 
 const App = () => {
-  // State variable to manage theme
+  // State variable to manage the theme
   const [theme, setTheme] = useState('green');
 
-  // Function to toggle theme between green and yellow
+  // Function to toggle between green and purple themes
   const toggleTheme = () => {
-    setTheme(theme === 'green' ? 'yellow' : 'green');
+    setTheme(theme === 'green' ? 'purple' : 'green');
   };
 
+  // Function to generate flickering effect for title
+  const flickerTitle = () => {
+    const title = document.getElementById('app-title');
+    title.classList.add('flicker');
+    setTimeout(() => {
+      title.classList.remove('flicker');
+    }, 2000); // Remove flicker effect after 2 seconds
+  };
+
+  // Render the App component with styled elements
   return (
     <div className={`app-container ${theme}`}>
-      {/* Title with blinking effect and emojis */}
-      <h1 className="title">
-        <span role="img" aria-label="laughing face">😆</span>
+      <h1 id="app-title" onClick={flickerTitle}>
         CHUCK NORRIS JOKES
-        <span role="img" aria-label="winking face">😉</span>
+        <span role="img" aria-label="laughing emoji">😆</span>
+        <span role="img" aria-label="winking emoji">😉</span>
       </h1>
-      {/* Button to toggle theme */}
-      <button className="theme-button" onClick={toggleTheme}>Change Theme</button>
+      <button className="theme-button" onClick={toggleTheme}>
+        {theme === 'green' ? 'Switch to Purple Theme' : 'Switch to Green Theme'}
+      </button>
       
-      {/* Components */}
       <Jokes />
       <br />
       <Category />

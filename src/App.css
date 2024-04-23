@@ -1,44 +1,67 @@
 /* Container styles */
 .app-container {
   text-align: center;
+  padding: 20px;
 }
 
 /* Title styles */
-.title {
-  font-size: 36px;
-  font-weight: bold;
-  margin-top: 20px;
+#app-title {
+  font-size: 2.5em;
   margin-bottom: 20px;
-  animation: blink-animation 3s infinite alternate;
+  animation: flickerAnimation 3s infinite;
 }
 
-/* Blink animation */
-@keyframes blink-animation {
-  from {
+/* Flicker animation */
+@keyframes flickerAnimation {
+  0%, 18%, 22%, 25%, 50%, 75%, 100% {
     opacity: 1;
   }
-  to {
+  
+  20%, 24%, 23%, 49%, 74% {
     opacity: 0;
   }
 }
 
-/* Button styles */
+/* Theme button styles */
 .theme-button {
-  padding: 10px 20px;
-  margin-bottom: 20px;
-  background-color: #007bff;
-  color: #fff;
+  width: 9em;
+  height: 3em;
+  border-radius: 30em;
+  font-size: 15px;
+  font-family: inherit;
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 6px 6px 12px #c5c5c5,
+              -6px -6px 12px #ffffff;
+  margin-bottom: 20px;
+}
+
+.theme-button::before {
+  content: '';
+  width: 0;
+  height: 3em;
+  border-radius: 30em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(to right, #0fd850 0%, #f9f047 100%);
+  transition: .5s ease;
+  display: block;
+  z-index: -1;
+}
+
+.theme-button:hover::before {
+  width: 9em;
 }
 
 /* Green theme */
 .green {
-  background-color: #7FFF00; /* Green */
+  background-color: #baffc9;
 }
 
-/* Yellow theme */
-.yellow {
-  background-color: #FFFF00; /* Yellow */
+/* Purple theme */
+.purple {
+  background-color: #cbc0ff;
 }
