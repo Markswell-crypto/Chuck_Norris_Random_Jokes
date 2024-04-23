@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import Modal from './modal/Modal'; 
 
 const Jokes = () => {
-  // Initialize joke property in component's state to an empty string
+  // Initialize state variables for joke, error, loading, and modal visibility
   const [joke, setJoke] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Function to fetch a random Chuck Norris joke
   const fetchRandomJoke = async () => {
@@ -33,7 +35,17 @@ const Jokes = () => {
     }
   };
 
-  // Render loading spinner while fetching, error message if error occurs, and joke if available
+  // Function to open the modal
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  // Function to close the modal
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  // Render the Jokes component
   return (
     <div>
       <button onClick={fetchRandomJoke}>Get Random Joke</button>
@@ -42,8 +54,19 @@ const Jokes = () => {
       {joke && (
         <div style={{ border: '1px solid #ccc', borderRadius: '5px', padding: '10px', marginTop: '10px' }}>
           <p>{joke}</p>
+          {/* Button to open the modal */}
+          <button onClick={openModal}>View Joke in Modal</button>
         </div>
       )}
+      {/* Render the Modal component */}
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        {/* Render the joke inside the Modal */}
+        <div style={{ padding: '20px' }}>
+          <h2>Chuck Norris Joke</h2>
+          <p>{joke}</p>
+          <button onClick={closeModal}>Close Modal</button>
+        </div>
+      </Modal>
     </div>
   );
 };
