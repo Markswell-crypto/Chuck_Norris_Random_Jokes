@@ -1,6 +1,6 @@
 /* Container styles*/
 .category-container {
-    max-width: 500px;
+    max-width: 50%;
     margin: 0 auto;
     padding: 20px;
     background-color: #f9f9f9;
@@ -34,6 +34,7 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    display: block;
   }
   
   .category-button:hover {

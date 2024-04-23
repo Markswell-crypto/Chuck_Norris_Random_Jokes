@@ -8,11 +8,13 @@ const App = () => {
 
   return (
     <div>
+      <br></br>
       <Jokes/>
       <br></br>
       <Category />
       <br></br>
       <CategoryList />
+      <br></br>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import JokeSearch from '../jokeSearch/JokeSearch';
+import './jokes.css'; 
 
 const Jokes = () => {
   // Initialize state variables for random joke, searched jokes, error, and loading
@@ -68,31 +69,31 @@ const Jokes = () => {
   };
 
   return (
-    <div>
+    <div className="jokes-container">
       {/* Section for displaying searched jokes */}
       <div>
-        <h3>Search for a joke here!</h3>
+        <h3 className="jokes-heading">Search for a joke here!</h3>
         <JokeSearch onSearch={fetchJokeByKeyword} />
-        {loading && <p>Loading...</p>}
-        {error && <p>Error: {error}</p>}
+        {loading && <p className="jokes-loading">Loading...</p>}
+        {error && <p className="jokes-error">Error: {error}</p>}
         {/* Display only the first five searched jokes */}
         {searchedJokes.slice(0, 5).map((joke, index) => (
-          <div key={index} style={{ border: '1px solid #ccc', borderRadius: '5px', padding: '10px', marginTop: '10px' }}>
+          <div key={index} className="jokes-searched-joke">
             <p>{joke}</p>
           </div>
         ))}
         {/* Display a button to view the rest of the jokes if there are more than five */}
-        {searchedJokes.length > 5 && <button onClick={() => setSearchedJokes(searchedJokes.slice(5))}>View More Jokes</button>}
+        {searchedJokes.length > 5 && <button onClick={() => setSearchedJokes(searchedJokes.slice(5))} className="jokes-view-more-button">View More Jokes</button>}
         {/* Clear the display when search box is empty */}
-        {searchedJokes.length === 0 && <p>Enter a keyword to search.</p>}
+        {searchedJokes.length === 0 && <p className="jokes-empty-message">Enter a keyword to search.</p>}
       </div>
       
       {/* Section for displaying random joke */}
       <div>
-        <h3>Get a Random Joke Here!</h3>
-        <button onClick={fetchRandomJoke}>Get Random Joke</button>
+        <h3 className="jokes-heading">Get a Random Joke Here!</h3>
+        <button onClick={fetchRandomJoke} className="jokes-random-button">Get Random Joke</button>
         {randomJoke && (
-          <div style={{ border: '1px solid #ccc', borderRadius: '5px', padding: '10px', marginTop: '10px' }}>
+          <div className="jokes-random-joke">
             <p>{randomJoke}</p>
           </div>
         )}

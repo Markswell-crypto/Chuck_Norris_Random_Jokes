@@ -1,0 +1,86 @@
+/* Container styles */
+.jokes-container {
+    max-width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading styles */
+  .jokes-heading {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Loading styles */
+  .jokes-loading {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* Error styles */
+  .jokes-error {
+    color: #dc3545;
+    margin-top: 10px;
+  }
+  
+  /* Searched joke styles */
+  .jokes-searched-joke {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+  }
+  
+  /* Empty message styles */
+  .jokes-empty-message {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* View more button styles */
+  .jokes-view-more-button {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .jokes-view-more-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Random joke styles */
+  .jokes-random-joke {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 20px;
+  }
+  
+  /* Random button styles */
+  .jokes-random-button {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .jokes-random-button:hover {
+    background-color: #0056b3;
+  }
+  
