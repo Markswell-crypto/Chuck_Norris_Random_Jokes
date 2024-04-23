@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Modal from './modal/Modal'; 
 
 const CategoryList = ({ onCategorySelect }) => {
   // State variables to manage categories data, loading state, and errors
@@ -7,7 +6,7 @@ const CategoryList = ({ onCategorySelect }) => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false); // New state variable for modal visibility
+  const [showCategories, setShowCategories] = useState(false); // State variable to track whether to display categories
 
   // useEffect hook to fetch categories data when the component mounts
   useEffect(() => {
@@ -47,41 +46,29 @@ const CategoryList = ({ onCategorySelect }) => {
     setSelectedCategory(event.target.value);
   };
 
-  // Function to open the modal
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  // Function to close the modal
-  const closeModal = () => {
-    setIsModalOpen(false);
+  // Function to toggle the display of categories
+  const toggleShowCategories = () => {
+    setShowCategories(!showCategories);
   };
 
   // Render loading spinner while fetching, error message if error occurs, and dropdown menu for category selection
   return (
     <div>
+        <h3>Get a list of all Joke Categories here!</h3>
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
-      <select value={selectedCategory} onChange={handleCategorySelect}>
-        <option value="">Select Category</option>
-        {categories.map((category, index) => (
-          <option key={index} value={category}>
-            {category}
-          </option>
-        ))}
-      </select>
-      {selectedCategory && (
+      {/* Button to toggle the display of categories */}
+      <button onClick={toggleShowCategories}>
+        {showCategories ? 'Hide All Joke Categories' : 'View All Joke Categories'}
+      </button>
+      {/* Display categories if showCategories is true */}
+      {showCategories && (
         <div>
-          {/* Button to open the modal */}
-          <button onClick={openModal}>Get Joke</button>
-          {/* Render the Modal component */}
-          <Modal isOpen={isModalOpen} onClose={closeModal}>
-            {/* Render the selected category and button to close the modal */}
-            <div style={{ padding: '20px' }}>
-              <h2>Selected Category: {selectedCategory}</h2>
-              <button onClick={closeModal}>Close Modal</button>
-            </div>
-          </Modal>
+          {categories.map((category, index) => (
+            <button key={index} onClick={() => onCategorySelect(category)}>
+              {category}
+            </button>
+          ))}
         </div>
       )}
     </div>
