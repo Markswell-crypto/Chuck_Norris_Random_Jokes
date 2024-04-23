@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Jokes from './components/jokes/Jokes';
 import Category from './components/categories/Category';
 import CategoryList from './components/categoryList/CategoryList';
