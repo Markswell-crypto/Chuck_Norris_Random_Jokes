@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ChuckNorrisJoke = () => {
+const Jokes = () => {
   // Initialize joke property in component's state to an empty string
   const [joke, setJoke] = useState('');
   const [error, setError] = useState(null);
@@ -48,4 +48,4 @@ const ChuckNorrisJoke = () => {
   );
 };
 
-export default ChuckNorrisJoke;
+export default Jokes;
