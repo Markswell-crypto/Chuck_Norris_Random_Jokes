@@ -1,46 +1,81 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-// Component to fetch and display Chuck Norris jokes by category
-const Category = ({ category }) => {
-  // State variables to manage joke data, loading state, and errors
+const Category = () => {
+  // State variables to manage joke data, loading state, errors, and selected category
   const [joke, setJoke] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [categories, setCategories] = useState([]); // State variable to store categories
+  const [selectedCategory, setSelectedCategory] = useState(''); // State variable to store selected category
 
-  // Function to fetch Chuck Norris joke by category
-  const fetchCategory = async () => {
-    // Set loading state to true while fetching data
+  // Function to fetch categories from the Chuck Norris API
+  const fetchCategories = async () => {
+    try {
+      const response = await fetch('https://api.chucknorris.io/jokes/categories');
+      if (!response.ok) {
+        throw new Error('Failed to fetch categories');
+      }
+      const data = await response.json();
+      setCategories(data); // Update categories state with fetched data
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  // useEffect hook to fetch categories when the component mounts
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  // Function to handle category selection
+  const handleCategoryChange = (event) => {
+    setSelectedCategory(event.target.value);
+    setJoke(''); // Clear joke display when a new category is selected
+    setError(null); // Clear error message when a new category is selected
+  };
+
+  // Function to fetch Chuck Norris joke by selected category
+  const fetchJokeByCategory = async () => {
+    if (!selectedCategory) {
+      setError('Please select a category first!'); 
+      return;
+    }
     setLoading(true);
-    // Clear any previous error messages
     setError(null);
     try {
-      // Make API request to fetch joke by category
-      const response = await fetch(`https://api.chucknorris.io/jokes/random?category=${category}`);
-      // Check if response is successful (status code 200-299)
+      const response = await fetch(`https://api.chucknorris.io/jokes/random?category=${selectedCategory}`);
       if (!response.ok) {
-        // If response is not successful, throw an error
         throw new Error('Failed to fetch joke');
       }
-      // Parse response body as JSON
       const data = await response.json();
-      // Update joke state with fetched joke value
       setJoke(data.value);
     } catch (error) {
-      // If an error occurs during fetching, set error state with error message
       setError(error.message);
     } finally {
-      // Set loading state to false after fetching is complete (either success or failure)
       setLoading(false);
     }
   };
 
-  // Render loading spinner while fetching, error message if error occurs, and joke if available
   return (
     <div>
+        <h3>Get Jokes based on category here!</h3>
+      {/* Dropdown menu to select category */}
+      <select value={selectedCategory} onChange={handleCategoryChange}>
+        <option value="">Select Category</option>
+        {/* Map through categories to render options */}
+        {categories.map((category, index) => (
+          <option key={index} value={category}>
+            {category}
+          </option>
+        ))}
+      </select>
+      {/* Button to fetch joke by selected category */}
+      <button onClick={fetchJokeByCategory}>Get Joke by Category</button>
+
+      {/* Render loading spinner while fetching, error message if error occurs, and joke if available */}
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
       {joke && <p>{joke}</p>}
-      <button onClick={fetchCategory}>Get Joke by Category</button>
     </div>
   );
 };
