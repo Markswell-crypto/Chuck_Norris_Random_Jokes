@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import Modal from './modal/Modal';
 
 const JokeSearch = ({ onSearch }) => {
-  // State variables for managing search query and modal visibility
+  // State variable to store the search query
   const [query, setQuery] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Function to handle changes in the search input field
   const handleInputChange = (event) => {
@@ -17,17 +15,7 @@ const JokeSearch = ({ onSearch }) => {
     onSearch(query);
   };
 
-  // Function to open the modal
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  // Function to close the modal
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  // Render the JokeSearch component
+  // Render an input field for entering search keywords and a button to trigger the search
   return (
     <div>
       <input
@@ -37,15 +25,6 @@ const JokeSearch = ({ onSearch }) => {
         onChange={handleInputChange}
       />
       <button onClick={handleSearch}>Search</button>
-
-      {/* Render the Modal component */}
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
-        {/* Render the search query inside the Modal */}
-        <div style={{ padding: '20px' }}>
-          <h2>Search Query: {query}</h2>
-          <button onClick={closeModal}>Close Modal</button>
-        </div>
-      </Modal>
     </div>
   );
 };
