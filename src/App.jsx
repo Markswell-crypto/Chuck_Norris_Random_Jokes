@@ -9,7 +9,9 @@ const App = () => {
   return (
     <div>
       <Jokes/>
+      <br></br>
       <Category />
+      <br></br>
       <CategoryList />
     </div>
   );

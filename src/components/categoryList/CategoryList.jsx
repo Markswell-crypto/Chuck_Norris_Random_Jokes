@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './categoryList.css'; // Import CSS file
 
 const CategoryList = ({ onCategorySelect }) => {
   // State variables to manage categories data, loading state, and errors
@@ -53,19 +54,19 @@ const CategoryList = ({ onCategorySelect }) => {
 
   // Render loading spinner while fetching, error message if error occurs, and dropdown menu for category selection
   return (
-    <div>
-        <h3>Get a list of all Joke Categories here!</h3>
-      {loading && <p>Loading...</p>}
-      {error && <p>Error: {error}</p>}
+    <div className="category-list-container">
+      <h3 className="category-list-heading">Get a list of all Joke Categories here!</h3>
+      {loading && <p className="category-list-loading">Loading...</p>}
+      {error && <p className="category-list-error">Error: {error}</p>}
       {/* Button to toggle the display of categories */}
-      <button onClick={toggleShowCategories}>
+      <button className="category-list-button" onClick={toggleShowCategories}>
         {showCategories ? 'Hide All Joke Categories' : 'View All Joke Categories'}
       </button>
       {/* Display categories if showCategories is true */}
       {showCategories && (
-        <div>
+        <div className="category-list-buttons-container">
           {categories.map((category, index) => (
-            <button key={index} onClick={() => onCategorySelect(category)}>
+            <button key={index} className="category-list-category-button" onClick={() => onCategorySelect(category)}>
               {category}
             </button>
           ))}
