@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './jokeSearch.css'; // Import CSS file for styling
 
 const JokeSearch = ({ onSearch }) => {
   // State variable to store the search query
@@ -17,14 +18,15 @@ const JokeSearch = ({ onSearch }) => {
 
   // Render an input field for entering search keywords and a button to trigger the search
   return (
-    <div>
+    <div className="joke-search-container">
       <input
         type="text"
         placeholder="Enter keyword"
         value={query}
         onChange={handleInputChange}
+        className="joke-search-input"
       />
-      <button onClick={handleSearch}>Search</button>
+      <button onClick={handleSearch} className="joke-search-button">Search</button>
     </div>
   );
 };
