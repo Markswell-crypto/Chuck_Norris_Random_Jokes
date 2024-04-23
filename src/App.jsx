@@ -3,6 +3,7 @@ import Jokes from './components/jokes/Jokes';
 import Category from './components/categories/Category';
 import CategoryList from './components/categoryList/CategoryList';
 import './App.css'; 
+import logo from './assets/chucknorris.png'
 
 const App = () => {
   // State variable to manage the theme
@@ -25,6 +26,8 @@ const App = () => {
   // Render the App component with styled elements
   return (
     <div className={`app-container ${theme}`}>
+      <div className='header-container'>
+      <img src={logo} alt="Logo" className="logo" />
       <h1 id="app-title" onClick={flickerTitle}>
         CHUCK NORRIS JOKES
         <span role="img" aria-label="laughing emoji">😆</span>
@@ -33,7 +36,7 @@ const App = () => {
       <button className="theme-button" onClick={toggleTheme}>
         {theme === 'green' ? 'Switch to Purple Theme' : 'Switch to Green Theme'}
       </button>
-      
+      </div>
       <Jokes />
       <br />
       <Category />

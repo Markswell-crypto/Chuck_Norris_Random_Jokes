@@ -2,7 +2,7 @@
 
 This web application allows users to fetch Chuck Norris jokes randomly or by category, as well as search for jokes by keyword. It features a responsive and attractive design with the ability to switch between green and purple themes.
 
-chuck-norris-random-jokes.vercel.app
+<chuck-norris-random-jokes.vercel.app>
 
     You can access the live demo of the Chuck Norris Jokes Web App here.
 

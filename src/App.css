@@ -4,6 +4,18 @@
   padding: 20px;
 }
 
+.header-container {
+  display: flex; 
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center; 
+}
+/* logo styles */
+.logo {
+  width: 150px; /* Adjust the width as needed */
+  margin-left: 10px; /* Add some margin to separate the logo from the heading */
+}
+
 /* Title styles */
 #app-title {
   font-size: 2.5em;
@@ -36,6 +48,7 @@
   box-shadow: 6px 6px 12px #c5c5c5,
               -6px -6px 12px #ffffff;
   margin-bottom: 20px;
+  margin-left: 10px;
 }
 
 .theme-button::before {
