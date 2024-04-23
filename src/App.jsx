@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
-import JokeSearch from './components/jokeSearch/JokeSearch';
 import Jokes from './components/jokes/Jokes';
+import Category from './components/categories/Category';
+import CategoryList from './components/categoryList/CategoryList';
 
 
 const App = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-
-  const handleSearch = (query) => {
-    setSearchQuery(query);
-  };
 
   return (
     <div>
-      <JokeSearch onSearch={handleSearch} />
-      <Jokes searchQuery={searchQuery} />
+      <Jokes/>
+      <Category />
+      <CategoryList />
     </div>
   );
 };
