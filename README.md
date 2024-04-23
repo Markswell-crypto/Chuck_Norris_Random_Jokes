@@ -2,7 +2,9 @@
 
 This web application allows users to fetch Chuck Norris jokes randomly or by category, as well as search for jokes by keyword. It features a responsive and attractive design with the ability to switch between green and purple themes.
 
-<chuck-norris-random-jokes.vercel.app>
+## Link to Demo
+
+<https://chuck-norris-random-jokes.vercel.app>
 
     You can access the live demo of the Chuck Norris Jokes Web App here.
 
@@ -28,7 +30,7 @@ To run the application locally on your machine, follow these steps:
 
         ## Open in Browser
 
-        Once the server starts, open your browser and go to <http://localhost:5173> to view the application.
+        Once the server starts, open your browser and go to http://localhost:5173 to view the application.
 
 ## Usage Instructions
 
